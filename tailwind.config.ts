@@ -8,6 +8,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      maxHeight: {
+        '40vh': '40vh'
+      },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
