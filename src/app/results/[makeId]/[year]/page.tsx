@@ -1,10 +1,9 @@
 'use client'
 
 import React, {useEffect, useState} from "react";
-import {IVehicle} from "@/types/vehicle.types";
-import {vehicleDates} from "@/constants/vehicleDates";
 import {IVehicleResult} from "@/types/vehicleResult.types";
 import {Loader} from "@/components/ui/Loader";
+
 
 export default function ResultPage({params}: {
     params: {
@@ -47,26 +46,4 @@ export default function ResultPage({params}: {
         </div>
 
     </>)
-}
-
-export async function getStaticPaths() {
-    const vehicleResponse = await fetch('https://vpic.nhtsa.dot.gov/api/vehicles/GetMakesForVehicleType/car?format=json');
-    const vehicleData = await vehicleResponse.json();
-    const makeIds: string[] = vehicleData.map((make: IVehicle) => make.MakeId)
-
-    const years = vehicleDates;
-
-    const paths = makeIds.flatMap((makeId) =>
-        years.map((year) => ({
-            params: {
-                makeId,
-                year
-            }
-        }))
-    );
-
-    return {
-        paths,
-        fallback: false,
-    };
 }
