@@ -33,15 +33,17 @@ export default function ResultPage({params}: {
     return (<>
         <div className={'p-10'}>
             <div className={'text-3xl'}>Vehicle Results</div>
-            {isLoading
-                ? <div className={'h-full'}><Loader size={50}/></div>
-                : models
-                    ? models.map((model: IVehicleResult, index) => {
-                        return <div className={'flex'} key={index}>
-                            <div>{model.Make_Name} {model.Model_Name}</div>
-                        </div>
-                    })
-                    : <div>No vehicles has been found</div>}
+            <div className={'p-2'}>
+                {isLoading
+                    ? <div className={'h-full'}><Loader size={50}/></div>
+                    : models
+                        ? models.map((model: IVehicleResult, index) => {
+                            return <div className={'flex mb-2'} key={index}>
+                                <div>{model.Make_Name} {model.Model_Name}</div>
+                            </div>
+                        })
+                        : <div>No vehicles has been found</div>}
+            </div>
         </div>
 
     </>)

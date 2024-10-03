@@ -4,9 +4,9 @@ import React from 'react'
 export default async function Home() {
 
     return (
-        <>
-            <div>Main Page</div>
+        <div className={'p-10'}>
+            <div className={'text-3xl mb-3'}>Main Page</div>
             <Filters/>
-        </>
+        </div>
     );
 }
